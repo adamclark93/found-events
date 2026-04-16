@@ -7,9 +7,11 @@ Single-page registration site for the 29 Apr 2026 webinar, deployed to Vercel.
 | Path | What it is |
 |---|---|
 | `index.html` | The landing page (static, self-contained CSS + JS) |
-| `api/register.js` | Vercel serverless function that handles form submits: validates, optionally registers with Zoom, sends confirmation email via Resend, notifies admin |
+| `api/register.js` | Serverless function for form submits: validates, optionally registers with Zoom, sends confirmation via Resend, adds contact to audience, notifies admin |
+| `api/send-reminder.js` | Serverless function that sends the day-before reminder to every contact in the Resend audience. Triggered by Vercel Cron or manual curl |
+| `api/_lib/email.js` | Shared email template module - confirmation and reminder both use it, so styling stays aligned |
 | `webinar.ics` | Static calendar invite for the 29 Apr session (served from root) |
-| `vercel.json` | Security headers + `.ics` content-type |
+| `vercel.json` | Security headers, `.ics` content-type, and cron schedule |
 | `package.json` | Just `resend` as a dep |
 | `*.jpg`, `*.png` | Hero, speaker, testimonial, logo images |
 
@@ -31,13 +33,20 @@ This runs at http://localhost:3000 and routes `/api/register` to the serverless 
 
 Set these in Vercel → Project → Settings → Environment Variables. All are used by `api/register.js`.
 
-### Required
+### Required for registration
 
 | Var | What | Where to get it |
 |---|---|---|
 | `RESEND_API_KEY` | Resend API key for sending email | resend.com → API Keys |
-| `FROM_EMAIL` | Verified sender, e.g. `FOUND <hello@foundperform.com>` | Must be a verified domain in Resend |
+| `FROM_EMAIL` | Verified sender, e.g. `FOUND <emily@foundperform.com>` | Must be a verified domain in Resend |
 | `ADMIN_EMAIL` | Who gets the "new registration" notification (comma-separated OK) | e.g. `emily@foundperform.com,adam@foundperform.com` |
+
+### Required for day-before reminder
+
+| Var | What | Where to get it |
+|---|---|---|
+| `RESEND_AUDIENCE_ID` | UUID of the Resend audience that registrants get added to | Resend → Audiences → create "Webinar 29 Apr 2026" → copy the ID |
+| `CRON_SECRET` | Random string that authenticates `/api/send-reminder` calls. Vercel Cron sends this automatically | Generate with `openssl rand -hex 32` (or any random 32+ char string) |
 
 ### Optional — adds personalised Zoom join links
 
@@ -62,6 +71,60 @@ If all four are set, the function will register each person directly with Zoom W
    - `ADMIN_EMAIL` = whoever should see new registrations
 
 That's enough to go live. Emails will be sent, admin gets notified, confirmation link placeholder points to `ZOOM_FALLBACK_URL` or reads "we'll send the link the morning of" if that's unset too.
+
+## Setting up the day-before reminder
+
+A Vercel Cron job fires `/api/send-reminder` at **08:00 UTC on 28 April 2026 (9:00am BST)**. It reads every contact in the Resend audience and sends them a branded "see you tomorrow" email.
+
+To enable it:
+
+1. **Resend → Audiences → Create audience** → name it e.g. "Webinar 29 Apr 2026" → copy the audience ID.
+2. **Generate a secret** on your terminal:
+   ```bash
+   openssl rand -hex 32
+   ```
+3. **Vercel env vars** — add:
+   - `RESEND_AUDIENCE_ID` = the audience ID from step 1
+   - `CRON_SECRET` = the secret from step 2
+4. **Redeploy**. New registrations from this point on get added to the audience.
+5. **Confirm the cron is scheduled**: Vercel → Project → Settings → Cron Jobs. You should see `/api/send-reminder` scheduled for `0 8 28 4 *`.
+
+### Firing the reminder manually
+
+If you need to send early, late, or test-send, you can hit the endpoint by hand:
+
+```bash
+curl -H "Authorization: Bearer $CRON_SECRET" https://events.foundperform.com/api/send-reminder
+```
+
+It returns `{ mode, sent, skipped, failed, errors }` so you can see what happened.
+
+### Pre-launch testing
+
+Before 28 Apr, use one of these to confirm everything is wired correctly:
+
+**Dry run** — see who would be emailed without sending anything:
+```bash
+curl -H "Authorization: Bearer $CRON_SECRET" "https://events.foundperform.com/api/send-reminder?dryrun=1"
+```
+Returns `{ mode: "dryrun", audienceSize, wouldSend, recipients: [...] }`. Confirms your audience is populated and the function can read it.
+
+**Send to yourself** — fire the real rendered email only to one address:
+```bash
+curl -H "Authorization: Bearer $CRON_SECRET" \
+  "https://events.foundperform.com/api/send-reminder?to=emily@foundperform.com"
+```
+Subject gets prefixed with `[TEST]` so you can tell it apart from the real send. Use this to verify the rendered email is exactly as expected.
+
+### Verifying the cron is scheduled
+
+Vercel → Project → Settings → Cron Jobs. You should see `/api/send-reminder` with next run showing **28 Apr 2026 08:00 UTC**. If it's missing or the date is wrong, the cron won't fire.
+
+After the cron fires, check Vercel → Functions → Logs → `send-reminder.js` to see the execution result (status code, counts, any errors).
+
+### After the webinar
+
+The cron expression is `0 8 28 4 *` - no year, so it fires every year on 28 April at 08:00 UTC. Delete it from `vercel.json` (or from Vercel Cron Jobs UI) after the event if you don't want it firing again in 2027.
 
 ## Setting up Zoom Webinars (recommended but optional)
 
@@ -105,6 +168,10 @@ Add GA4 + LinkedIn Insight tag script tags in `<head>` when ready. Form submit a
 
 - [ ] Resend domain verified and sender email tested
 - [ ] `ADMIN_EMAIL` receives a test registration
+- [ ] Resend audience created and `RESEND_AUDIENCE_ID` set
+- [ ] `CRON_SECRET` set (32+ chars, random)
+- [ ] Manual reminder test: `curl -H "Authorization: Bearer $CRON_SECRET" .../api/send-reminder` returns `sent > 0`
+- [ ] Vercel Cron Jobs shows `/api/send-reminder` on `0 8 28 4 *`
 - [ ] `webinar.ics` opens correctly in Google Cal, Outlook, Apple Cal
 - [ ] Zoom webinar created (if using Webinars API)
 - [ ] Custom domain pointed at Vercel (e.g. `events.foundperform.com`)
