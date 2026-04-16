@@ -656,7 +656,7 @@
       border-top: 1px solid #d4cfc7;
     }
 
-    /* Responsive */
+    /* Responsive — tablet & below */
     @media (max-width: 1024px) {
       .hero-grid {
         grid-template-columns: 1fr;
@@ -673,6 +673,139 @@
 
       .hero h1 {
         font-size: 32px;
+      }
+
+      .container {
+        padding: 0 24px;
+      }
+    }
+
+    /* Responsive — mobile */
+    @media (max-width: 640px) {
+      .container {
+        padding: 0 20px;
+      }
+
+      .hero {
+        padding: 32px 0 48px;
+      }
+
+      .hero h1 {
+        font-size: 26px;
+        line-height: 1.2;
+      }
+
+      .hero-subtitle {
+        font-size: 15px;
+      }
+
+      .event-label {
+        font-size: 11px;
+        margin-bottom: 20px;
+      }
+
+      .logo img {
+        height: 36px !important;
+      }
+
+      .sessions {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin-bottom: 28px;
+      }
+
+      .session-block .session-date {
+        font-size: 20px;
+      }
+
+      .hosts {
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .form-card {
+        padding: 24px;
+        border-radius: 16px;
+      }
+
+      .form-card h2 {
+        font-size: 18px;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .btn-register {
+        font-size: 15px;
+        padding: 13px;
+      }
+
+      .learn-section {
+        padding: 40px 0;
+      }
+
+      .learn-section h2,
+      .testimonials-section h2,
+      .who-card h2 {
+        font-size: 24px;
+        line-height: 1.25;
+      }
+
+      .learn-section .section-header {
+        margin-bottom: 32px;
+      }
+
+      .learn-card {
+        padding: 24px;
+      }
+
+      .learn-card h3 {
+        font-size: 16px;
+      }
+
+      .who-section {
+        padding: 40px 0 20px;
+      }
+
+      .who-card {
+        padding: 28px 22px;
+        border-radius: 16px;
+      }
+
+      .who-card p {
+        font-size: 15px;
+      }
+
+      .testimonials-section {
+        padding: 40px 0 60px;
+      }
+
+      .testimonials-section .section-subtitle {
+        margin-bottom: 32px;
+        font-size: 14px;
+      }
+
+      .testimonial-card {
+        padding: 24px;
+      }
+
+      .testimonial-quote {
+        font-size: 14px;
+      }
+
+      .media-holder {
+        margin-bottom: 20px;
+      }
+
+      .media-holder .play-btn {
+        width: 60px;
+        height: 60px;
+      }
+
+      .media-holder .play-btn svg {
+        width: 22px;
+        height: 22px;
       }
     }
   </style>
