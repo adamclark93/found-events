@@ -371,6 +371,125 @@
       margin-top: 8px;
     }
 
+    /* Who It's For Section */
+    .who-section {
+      padding: 60px 0 40px;
+    }
+
+    .who-card {
+      background: white;
+      border-radius: 20px;
+      padding: 48px;
+      box-shadow: 0 4px 24px -4px rgba(45, 45, 45, 0.08);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .who-card .eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #ff2846;
+      margin-bottom: 12px;
+    }
+
+    .who-card h2 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .who-card p {
+      font-size: 16px;
+      color: #555;
+      line-height: 1.65;
+    }
+
+    .who-card p strong {
+      color: #2d2d2d;
+      font-weight: 600;
+    }
+
+    /* Testimonials Section */
+    .testimonials-section {
+      padding: 60px 0 80px;
+    }
+
+    .testimonials-section h2 {
+      text-align: center;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .testimonials-section .section-subtitle {
+      text-align: center;
+      color: #666;
+      font-size: 15px;
+      margin-bottom: 48px;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .testimonial-card {
+      background: white;
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .testimonial-quote {
+      font-size: 15px;
+      color: #333;
+      line-height: 1.65;
+      margin-bottom: 24px;
+      flex: 1;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .testimonial-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .testimonial-info .testimonial-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: #2d2d2d;
+    }
+
+    .testimonial-info .testimonial-role {
+      font-size: 13px;
+      color: #777;
+    }
+
+    @media (max-width: 768px) {
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+      .who-card {
+        padding: 32px 24px;
+      }
+    }
+
     /* Footer */
     footer {
       text-align: center;
@@ -550,6 +669,72 @@
             <div class="event-card-footer">
               <button class="btn-card btn-card-secondary">Pre-register</button>
               <p class="spots-label">Get early access when it opens</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Who It's For -->
+    <section class="who-section">
+      <div class="container">
+        <div class="who-card">
+          <p class="eyebrow">Who this is for</p>
+          <h2>Built for the people shaping the AI-era PE firm.</h2>
+          <p><strong>PE partners, principals, analysts, and operations teams</strong> at funds managing <strong>$50M to $5B+</strong> who want to build the right framework and skillset for the AI-future workplace &mdash; without losing the human edge that makes great investors great.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials-section">
+      <div class="container">
+        <h2>Trusted by leaders in private equity</h2>
+        <p class="section-subtitle">From the teams already working with FOUND</p>
+        <div class="testimonials-grid">
+
+          <div class="testimonial-card">
+            <p class="testimonial-quote">&ldquo;Working with FOUND has been highly valuable, using the cognitive assessments to bring new insights of where we need to focus, individually and as a team. The coaching then gave us a structured process and practical ways to raise the bar.&rdquo;</p>
+            <div class="testimonial-author">
+              <img src="testimonial-ollie.jpg" alt="Ollie Q" class="testimonial-avatar">
+              <div class="testimonial-info">
+                <div class="testimonial-name">Ollie Q.</div>
+                <div class="testimonial-role">Senior Vice President, Coller Capital</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <p class="testimonial-quote">&ldquo;The use of data and science, combined with her private equity background, made this feel different. Would strongly recommend!&rdquo;</p>
+            <div class="testimonial-author">
+              <img src="testimonial-samantha.jpg" alt="Samantha M" class="testimonial-avatar">
+              <div class="testimonial-info">
+                <div class="testimonial-name">Samantha M.</div>
+                <div class="testimonial-role">Principal, Carlyle AlpInvest</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <p class="testimonial-quote">&ldquo;The experience was exceptional. The program was customized to meet our specific needs and provided practical, real-world applications that our team could implement immediately.&rdquo;</p>
+            <div class="testimonial-author">
+              <img src="testimonial-sven.jpg" alt="Sven H" class="testimonial-avatar">
+              <div class="testimonial-info">
+                <div class="testimonial-name">Sven H.</div>
+                <div class="testimonial-role">Head of HR, Three Hills</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <p class="testimonial-quote">&ldquo;Outstanding coach &mdash; supportive, structured, and impactful. Thank you, Emily!&rdquo;</p>
+            <div class="testimonial-author">
+              <img src="testimonial-thomas.jpg" alt="Thomas C" class="testimonial-avatar">
+              <div class="testimonial-info">
+                <div class="testimonial-name">Thomas C.</div>
+                <div class="testimonial-role">Associate, EQT</div>
+              </div>
             </div>
           </div>
 
