@@ -669,9 +669,63 @@
       }
     }
 
+    /* Form success state */
+    #form-success {
+      text-align: center;
+      padding: 24px 8px;
+    }
+
+    #form-success .success-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: #fef1f3;
+      color: #ff2846;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+
+    #form-success .success-icon svg {
+      width: 32px;
+      height: 32px;
+    }
+
+    #form-success h2 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    #form-success p {
+      font-size: 15px;
+      color: #555;
+      line-height: 1.55;
+      margin-bottom: 8px;
+    }
+
+    #form-success .success-hint {
+      margin-top: 16px;
+      font-size: 13px;
+      color: #ff2846;
+      font-weight: 600;
+    }
+
     /* Next Steps Section */
     .next-section {
       padding: 60px 0 80px;
+      display: none;
+    }
+
+    .next-section.is-visible {
+      display: block;
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .next-section .section-header {
@@ -982,10 +1036,6 @@
             <div class="media-holder">
               <img src="breakfast-event.jpg" alt="FOUND breakfast event" class="media-bg">
               <div class="media-overlay"></div>
-              <div class="play-btn">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
-              </div>
-              <div class="media-label">Watch the 60-second intro</div>
             </div>
 
             <div class="sessions">
@@ -1024,43 +1074,56 @@
 
           <!-- Registration Form -->
           <div class="form-card">
-            <h2>Save your spot</h2>
-            <div class="form-row">
-              <div class="form-group">
-                <input type="text" placeholder="First name">
-              </div>
-              <div class="form-group">
-                <input type="text" placeholder="Last name">
-              </div>
-            </div>
-            <div class="form-group">
-              <input type="email" placeholder="Email">
-            </div>
-            <div class="form-group">
-              <input type="text" placeholder="Company">
-            </div>
-            <div class="form-group">
-              <input type="text" placeholder="Role">
-            </div>
-            <div class="form-group">
-              <textarea placeholder="What questions would you like answered? (optional)"></textarea>
-            </div>
-            <button class="btn-register">Register Now</button>
+            <form id="register-form">
+              <div id="form-fields">
+                <h2>Save your spot</h2>
+                <div class="form-row">
+                  <div class="form-group">
+                    <input type="text" name="firstName" placeholder="First name" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" name="lastName" placeholder="Last name" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <input type="email" name="email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                  <input type="text" name="company" placeholder="Company" required>
+                </div>
+                <div class="form-group">
+                  <input type="text" name="role" placeholder="Role" required>
+                </div>
+                <div class="form-group">
+                  <textarea name="questions" placeholder="What questions would you like answered? (optional)"></textarea>
+                </div>
+                <button type="submit" class="btn-register">Register Now</button>
 
-            <div class="form-meta">
-              <div class="meta-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m17 10 5-3v10l-5-3V10z"/></svg>
-                <span>Hosted on Zoom</span>
+                <div class="form-meta">
+                  <div class="meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m17 10 5-3v10l-5-3V10z"/></svg>
+                    <span>Hosted on Zoom</span>
+                  </div>
+                  <div class="meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    <span>60 minutes + live Q&amp;A</span>
+                  </div>
+                  <div class="meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7 16 12 23 17 23 7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                    <span>Can't join live? Register and we'll send you the recording</span>
+                  </div>
+                </div>
               </div>
-              <div class="meta-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                <span>60 minutes + live Q&amp;A</span>
+
+              <div id="form-success" hidden>
+                <div class="success-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <h2>You're in, <span id="success-name">friend</span>!</h2>
+                <p>We've saved your spot. Check your inbox for the Zoom link and calendar invite.</p>
+                <p class="success-hint">Scroll down for three things to do before the session kicks off &darr;</p>
               </div>
-              <div class="meta-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7 16 12 23 17 23 7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
-                <span>Can't join live? Register and we'll send you the recording</span>
-              </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>
@@ -1216,5 +1279,31 @@
       </div>
     </footer>
   </main>
+
+  <script>
+    (function() {
+      const form = document.getElementById('register-form');
+      if (!form) return;
+      const fields = document.getElementById('form-fields');
+      const success = document.getElementById('form-success');
+      const nameEl = document.getElementById('success-name');
+      const nextSection = document.querySelector('.next-section');
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const firstName = (form.elements['firstName'].value || '').trim();
+        if (nameEl && firstName) nameEl.textContent = firstName;
+        fields.hidden = true;
+        success.hidden = false;
+        if (nextSection) {
+          nextSection.classList.add('is-visible');
+          // let the CSS animation settle before scrolling
+          setTimeout(function() {
+            nextSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 200);
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
