@@ -545,7 +545,7 @@
       .sessions {
         grid-template-columns: 1fr;
       }
-      .next-grid {
+      .modal-cards {
         grid-template-columns: 1fr;
       }
     }
@@ -669,13 +669,85 @@
       }
     }
 
-    /* Form success state */
-    #form-success {
-      text-align: center;
-      padding: 24px 8px;
+    /* Success Modal */
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      overflow-y: auto;
     }
 
-    #form-success .success-icon {
+    .modal[hidden] { display: none; }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(20, 20, 20, 0.55);
+      backdrop-filter: blur(4px);
+      animation: modalFadeIn 0.2s ease-out;
+    }
+
+    .modal-panel {
+      position: relative;
+      background: #f9f5ee;
+      border-radius: 20px;
+      max-width: 960px;
+      width: 100%;
+      padding: 48px 40px 40px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+      animation: modalSlideIn 0.25s cubic-bezier(0.2, 0.9, 0.4, 1);
+      max-height: calc(100vh - 48px);
+      overflow-y: auto;
+    }
+
+    @keyframes modalFadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes modalSlideIn {
+      from { opacity: 0; transform: translateY(20px) scale(0.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: white;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: #666;
+      transition: background 0.15s, color 0.15s;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+    }
+
+    .modal-close:hover {
+      background: #2d2d2d;
+      color: white;
+    }
+
+    .modal-close svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .modal-header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .modal-icon {
       width: 64px;
       height: 64px;
       border-radius: 50%;
@@ -687,78 +759,39 @@
       margin: 0 auto 20px;
     }
 
-    #form-success .success-icon svg {
-      width: 32px;
-      height: 32px;
+    .modal-icon svg {
+      width: 30px;
+      height: 30px;
     }
 
-    #form-success h2 {
-      font-size: 22px;
+    .modal-header h2 {
+      font-size: 28px;
       font-weight: 700;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
+      line-height: 1.2;
     }
 
-    #form-success p {
+    .modal-header > p {
       font-size: 15px;
       color: #555;
       line-height: 1.55;
-      margin-bottom: 8px;
+      max-width: 480px;
+      margin: 0 auto;
     }
 
-    #form-success .success-hint {
-      margin-top: 16px;
+    .modal-header .modal-subtitle {
+      margin-top: 20px;
       font-size: 13px;
-      color: #ff2846;
       font-weight: 600;
-    }
-
-    /* Next Steps Section */
-    .next-section {
-      padding: 60px 0 80px;
-      display: none;
-    }
-
-    .next-section.is-visible {
-      display: block;
-      animation: fadeIn 0.5s ease-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(16px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .next-section .section-header {
-      text-align: center;
-      margin-bottom: 48px;
-    }
-
-    .next-section .eyebrow {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 1.5px;
+      letter-spacing: 0.5px;
       text-transform: uppercase;
       color: #ff2846;
-      margin-bottom: 12px;
     }
 
-    .next-section h2 {
-      font-size: 32px;
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
-
-    .next-section .section-subtitle {
-      color: #666;
-      font-size: 15px;
-    }
-
-    .next-grid {
+    .modal-cards {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      max-width: 1100px;
-      margin: 0 auto;
+      gap: 20px;
     }
 
     .next-card {
@@ -986,16 +1019,26 @@
         font-size: 14px;
       }
 
-      .next-section {
-        padding: 40px 0 60px;
+      .modal {
+        padding: 0;
       }
 
-      .next-section h2 {
-        font-size: 24px;
-        line-height: 1.25;
+      .modal-panel {
+        padding: 40px 20px 28px;
+        border-radius: 16px 16px 0 0;
+        max-height: 100vh;
+        min-height: 100vh;
       }
 
-      .next-grid {
+      .modal-header {
+        margin-bottom: 24px;
+      }
+
+      .modal-header h2 {
+        font-size: 22px;
+      }
+
+      .modal-cards {
         grid-template-columns: 1fr;
       }
 
@@ -1075,53 +1118,42 @@
           <!-- Registration Form -->
           <div class="form-card">
             <form id="register-form">
-              <div id="form-fields">
-                <h2>Save your spot</h2>
-                <div class="form-row">
-                  <div class="form-group">
-                    <input type="text" name="firstName" placeholder="First name" required>
-                  </div>
-                  <div class="form-group">
-                    <input type="text" name="lastName" placeholder="Last name" required>
-                  </div>
+              <h2>Save your spot</h2>
+              <div class="form-row">
+                <div class="form-group">
+                  <input type="text" name="firstName" placeholder="First name" required>
                 </div>
                 <div class="form-group">
-                  <input type="email" name="email" placeholder="Email" required>
-                </div>
-                <div class="form-group">
-                  <input type="text" name="company" placeholder="Company" required>
-                </div>
-                <div class="form-group">
-                  <input type="text" name="role" placeholder="Role" required>
-                </div>
-                <div class="form-group">
-                  <textarea name="questions" placeholder="What questions would you like answered? (optional)"></textarea>
-                </div>
-                <button type="submit" class="btn-register">Register Now</button>
-
-                <div class="form-meta">
-                  <div class="meta-item">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m17 10 5-3v10l-5-3V10z"/></svg>
-                    <span>Hosted on Zoom</span>
-                  </div>
-                  <div class="meta-item">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                    <span>60 minutes + live Q&amp;A</span>
-                  </div>
-                  <div class="meta-item">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7 16 12 23 17 23 7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
-                    <span>Can't join live? Register and we'll send you the recording</span>
-                  </div>
+                  <input type="text" name="lastName" placeholder="Last name" required>
                 </div>
               </div>
+              <div class="form-group">
+                <input type="email" name="email" placeholder="Email" required>
+              </div>
+              <div class="form-group">
+                <input type="text" name="company" placeholder="Company" required>
+              </div>
+              <div class="form-group">
+                <input type="text" name="role" placeholder="Role" required>
+              </div>
+              <div class="form-group">
+                <textarea name="questions" placeholder="What questions would you like answered? (optional)"></textarea>
+              </div>
+              <button type="submit" class="btn-register">Register Now</button>
 
-              <div id="form-success" hidden>
-                <div class="success-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <div class="form-meta">
+                <div class="meta-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m17 10 5-3v10l-5-3V10z"/></svg>
+                  <span>Hosted on Zoom</span>
                 </div>
-                <h2>You're in, <span id="success-name">friend</span>!</h2>
-                <p>We've saved your spot. Check your inbox for the Zoom link and calendar invite.</p>
-                <p class="success-hint">Scroll down for three things to do before the session kicks off &darr;</p>
+                <div class="meta-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  <span>60 minutes + live Q&amp;A</span>
+                </div>
+                <div class="meta-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7 16 12 23 17 23 7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                  <span>Can't join live? Register and we'll send you the recording</span>
+                </div>
               </div>
             </form>
           </div>
@@ -1222,56 +1254,6 @@
       </div>
     </section>
 
-    <!-- What Happens Next -->
-    <section class="next-section">
-      <div class="container">
-        <div class="section-header">
-          <p class="eyebrow">What Happens Next</p>
-          <h2>You're in. Here's how to prepare.</h2>
-          <p class="section-subtitle">Three things to do before the session kicks off.</p>
-        </div>
-        <div class="next-grid">
-
-          <a href="webinar.ics" class="next-card" download>
-            <div class="next-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            </div>
-            <h3>Add to your calendar</h3>
-            <p>Download the .ics invite so you don't miss the session. We'll email the Zoom link the morning of.</p>
-            <span class="next-link">
-              Download invite
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </span>
-          </a>
-
-          <a href="https://become.keypersonofinfluence.com/scorecard" class="next-card" target="_blank" rel="noopener">
-            <div class="next-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/><line x1="9" y1="11" x2="15" y2="11"/></svg>
-            </div>
-            <h3>Complete the Key Person Scorecard</h3>
-            <p>A 5-minute diagnostic that reveals where your performance edge is strongest &mdash; and where AI is most likely to erode it.</p>
-            <span class="next-link">
-              Take the scorecard
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </span>
-          </a>
-
-          <a href="https://youtube.com" class="next-card" target="_blank" rel="noopener">
-            <div class="next-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"/></svg>
-            </div>
-            <h3>Watch Emily on the Sarah McKay podcast</h3>
-            <p>Emily sat down with neuroscientist Dr Sarah McKay to unpack the brain science behind peak performance &mdash; the perfect primer for this session.</p>
-            <span class="next-link">
-              Watch the interview
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </span>
-          </a>
-
-        </div>
-      </div>
-    </section>
-
     <!-- Footer -->
     <footer>
       <div class="container">
@@ -1280,28 +1262,99 @@
     </footer>
   </main>
 
+  <!-- Success Modal -->
+  <div id="success-modal" class="modal" hidden aria-hidden="true" role="dialog" aria-labelledby="modal-title">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel" role="document">
+      <button type="button" class="modal-close" data-close aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <div class="modal-header">
+        <div class="modal-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h2 id="modal-title">You're in, <span id="success-name">friend</span>!</h2>
+        <p>We've saved your spot. Check your inbox for the Zoom link and calendar invite.</p>
+        <p class="modal-subtitle">Three things to do before the session kicks off:</p>
+      </div>
+
+      <div class="modal-cards">
+
+        <a href="webinar.ics" class="next-card" download>
+          <div class="next-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+          <h3>Add to your calendar</h3>
+          <p>Download the .ics invite so you don't miss the session. We'll email the Zoom link the morning of.</p>
+          <span class="next-link">
+            Download invite
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </a>
+
+        <a href="https://become.keypersonofinfluence.com/scorecard" class="next-card" target="_blank" rel="noopener">
+          <div class="next-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/><line x1="9" y1="11" x2="15" y2="11"/></svg>
+          </div>
+          <h3>Complete the Key Person Scorecard</h3>
+          <p>A 5-minute diagnostic that reveals where your performance edge is strongest &mdash; and where AI is most likely to erode it.</p>
+          <span class="next-link">
+            Take the scorecard
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </a>
+
+        <a href="https://youtube.com" class="next-card" target="_blank" rel="noopener">
+          <div class="next-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"/></svg>
+          </div>
+          <h3>Watch Emily on the Sarah McKay podcast</h3>
+          <p>Emily sat down with neuroscientist Dr Sarah McKay to unpack the brain science behind peak performance &mdash; the perfect primer for this session.</p>
+          <span class="next-link">
+            Watch the interview
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </a>
+
+      </div>
+    </div>
+  </div>
+
   <script>
     (function() {
       const form = document.getElementById('register-form');
-      if (!form) return;
-      const fields = document.getElementById('form-fields');
-      const success = document.getElementById('form-success');
+      const modal = document.getElementById('success-modal');
+      if (!form || !modal) return;
       const nameEl = document.getElementById('success-name');
-      const nextSection = document.querySelector('.next-section');
+
+      function openModal() {
+        modal.hidden = false;
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        modal.hidden = true;
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
 
       form.addEventListener('submit', function(e) {
         e.preventDefault();
         const firstName = (form.elements['firstName'].value || '').trim();
         if (nameEl && firstName) nameEl.textContent = firstName;
-        fields.hidden = true;
-        success.hidden = false;
-        if (nextSection) {
-          nextSection.classList.add('is-visible');
-          // let the CSS animation settle before scrolling
-          setTimeout(function() {
-            nextSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }, 200);
+        openModal();
+      });
+
+      modal.addEventListener('click', function(e) {
+        if (e.target.hasAttribute('data-close') || e.target.closest('[data-close]')) {
+          closeModal();
         }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && !modal.hidden) closeModal();
       });
     })();
   </script>
