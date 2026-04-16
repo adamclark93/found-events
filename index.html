@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cognitive Performance &amp; AI Webinar | FOUND</title>
+  <title>Private Markets: Build Future-Ready Skills in an AI World | FOUND</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -11,11 +14,29 @@
       box-sizing: border-box;
     }
 
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
     body {
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      font-family: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
       background-color: #f1ece4;
       color: #2d2d2d;
       line-height: 1.6;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: "Instrument Serif", Georgia, "Times New Roman", serif;
+      font-weight: 400;
+      letter-spacing: -0.01em;
     }
 
     .container {
@@ -55,19 +76,21 @@
     }
 
     .hero h1 {
-      font-size: 42px;
-      font-weight: 700;
-      line-height: 1.15;
+      font-size: 56px;
+      font-weight: 400;
+      line-height: 1.08;
+      letter-spacing: -0.015em;
       color: #2d2d2d;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
       max-width: 580px;
     }
 
     .hero-subtitle {
-      font-size: 17px;
+      font-size: 18px;
       color: #555;
       margin-bottom: 36px;
       max-width: 520px;
+      line-height: 1.55;
     }
 
     .media-holder {
@@ -138,9 +161,7 @@
     }
 
     .sessions {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
+      display: block;
       margin-bottom: 36px;
     }
 
@@ -240,9 +261,10 @@
     }
 
     .form-card h2 {
-      font-size: 20px;
-      font-weight: 700;
+      font-size: 26px;
+      font-weight: 400;
       margin-bottom: 24px;
+      line-height: 1.1;
     }
 
     .form-row {
@@ -318,6 +340,54 @@
       background: #e01f3a;
     }
 
+    .btn-register:disabled {
+      background: #c9c3b8;
+      cursor: not-allowed;
+    }
+
+    .form-consent {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-top: 14px;
+      font-size: 12px;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    .form-consent input[type="checkbox"] {
+      margin-top: 3px;
+      accent-color: #ff2846;
+      flex-shrink: 0;
+    }
+
+    .form-consent a {
+      color: #2d2d2d;
+      text-decoration: underline;
+    }
+
+    .form-error {
+      margin-top: 12px;
+      padding: 10px 12px;
+      background: #fef1f3;
+      border: 1px solid #ffd1d7;
+      border-radius: 8px;
+      color: #c9152e;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .form-error[hidden] { display: none; }
+
+    .form-honeypot {
+      position: absolute;
+      left: -10000px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+
     .form-meta {
       margin-top: 24px;
       padding-top: 20px;
@@ -351,9 +421,10 @@
 
     .events-section h2 {
       text-align: center;
-      font-size: 32px;
-      font-weight: 700;
+      font-size: 42px;
+      font-weight: 400;
       margin-bottom: 48px;
+      line-height: 1.1;
     }
 
     .events-grid {
@@ -387,9 +458,10 @@
     }
 
     .event-card-body h3 {
-      font-size: 18px;
-      font-weight: 700;
+      font-size: 22px;
+      font-weight: 400;
       margin-bottom: 8px;
+      line-height: 1.2;
     }
 
     .event-card-body .event-desc {
@@ -492,8 +564,9 @@
     }
 
     .learn-section h2 {
-      font-size: 32px;
-      font-weight: 700;
+      font-size: 42px;
+      font-weight: 400;
+      line-height: 1.1;
     }
 
     .learn-grid {
@@ -526,10 +599,10 @@
     }
 
     .learn-card h3 {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 10px;
-      line-height: 1.3;
+      font-size: 22px;
+      font-weight: 400;
+      margin-bottom: 12px;
+      line-height: 1.2;
     }
 
     .learn-card p {
@@ -540,9 +613,6 @@
 
     @media (max-width: 900px) {
       .learn-grid {
-        grid-template-columns: 1fr;
-      }
-      .sessions {
         grid-template-columns: 1fr;
       }
       .modal-cards {
@@ -556,10 +626,11 @@
     }
 
     .who-card {
-      background: white;
+      background: #2d2d2d;
+      color: #f1ece4;
       border-radius: 20px;
       padding: 48px;
-      box-shadow: 0 4px 24px -4px rgba(45, 45, 45, 0.08);
+      box-shadow: 0 4px 24px -4px rgba(45, 45, 45, 0.12);
       max-width: 900px;
       margin: 0 auto;
     }
@@ -574,20 +645,21 @@
     }
 
     .who-card h2 {
-      font-size: 28px;
-      font-weight: 700;
-      margin-bottom: 16px;
-      line-height: 1.2;
+      font-size: 38px;
+      font-weight: 400;
+      margin-bottom: 20px;
+      line-height: 1.1;
+      color: #ffffff;
     }
 
     .who-card p {
       font-size: 16px;
-      color: #555;
+      color: #d8d2c7;
       line-height: 1.65;
     }
 
     .who-card p strong {
-      color: #2d2d2d;
+      color: #ffffff;
       font-weight: 600;
     }
 
@@ -598,9 +670,10 @@
 
     .testimonials-section h2 {
       text-align: center;
-      font-size: 32px;
-      font-weight: 700;
+      font-size: 42px;
+      font-weight: 400;
       margin-bottom: 12px;
+      line-height: 1.1;
     }
 
     .testimonials-section .section-subtitle {
@@ -765,10 +838,10 @@
     }
 
     .modal-header h2 {
-      font-size: 28px;
-      font-weight: 700;
-      margin-bottom: 10px;
-      line-height: 1.2;
+      font-size: 38px;
+      font-weight: 400;
+      margin-bottom: 12px;
+      line-height: 1.1;
     }
 
     .modal-header > p {
@@ -815,28 +888,25 @@
       box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
     }
 
-    .next-card .next-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
-      background: #fef1f3;
-      color: #ff2846;
+    .next-card .next-number {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #ff2846;
+      color: white;
       display: flex;
       align-items: center;
       justify-content: center;
+      font-weight: 700;
+      font-size: 16px;
       margin-bottom: 20px;
     }
 
-    .next-card .next-icon svg {
-      width: 24px;
-      height: 24px;
-    }
-
     .next-card h3 {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 10px;
-      line-height: 1.3;
+      font-size: 22px;
+      font-weight: 400;
+      margin-bottom: 12px;
+      line-height: 1.2;
     }
 
     .next-card p {
@@ -881,7 +951,7 @@
       border-top: 1px solid #d4cfc7;
     }
 
-    /* Responsive — tablet & below */
+    /* Responsive - tablet & below */
     @media (max-width: 1024px) {
       .hero-grid {
         grid-template-columns: 1fr;
@@ -897,7 +967,7 @@
       }
 
       .hero h1 {
-        font-size: 32px;
+        font-size: 42px;
       }
 
       .container {
@@ -905,7 +975,7 @@
       }
     }
 
-    /* Responsive — mobile */
+    /* Responsive - mobile */
     @media (max-width: 640px) {
       .container {
         padding: 0 20px;
@@ -916,12 +986,12 @@
       }
 
       .hero h1 {
-        font-size: 26px;
-        line-height: 1.2;
+        font-size: 34px;
+        line-height: 1.1;
       }
 
       .hero-subtitle {
-        font-size: 15px;
+        font-size: 16px;
       }
 
       .event-label {
@@ -934,8 +1004,6 @@
       }
 
       .sessions {
-        grid-template-columns: 1fr;
-        gap: 16px;
         margin-bottom: 28px;
       }
 
@@ -954,7 +1022,7 @@
       }
 
       .form-card h2 {
-        font-size: 18px;
+        font-size: 22px;
       }
 
       .form-row {
@@ -973,8 +1041,8 @@
       .learn-section h2,
       .testimonials-section h2,
       .who-card h2 {
-        font-size: 24px;
-        line-height: 1.25;
+        font-size: 30px;
+        line-height: 1.15;
       }
 
       .learn-section .section-header {
@@ -986,7 +1054,7 @@
       }
 
       .learn-card h3 {
-        font-size: 16px;
+        font-size: 20px;
       }
 
       .who-section {
@@ -1035,7 +1103,7 @@
       }
 
       .modal-header h2 {
-        font-size: 22px;
+        font-size: 28px;
       }
 
       .modal-cards {
@@ -1073,8 +1141,8 @@
               <img src="found-logo.png" alt="FOUND" style="height: 44px; width: auto;">
             </div>
             <p class="event-label">Free 60-minute live webinar</p>
-            <h1>Cognitive Performance &amp; AI: protecting your edge in a machine-augmented workplace.</h1>
-            <p class="hero-subtitle">Join neuropsychologist Alexandra Paizee and FOUND founder Emily Cook for a live conversation on how AI is reshaping the way we think, focus, and perform &mdash; and what leaders can do about it.</p>
+            <h1>Private Markets: Build Future-Ready Skills in an AI World.</h1>
+            <p class="hero-subtitle">Join neuropsychologist Alexandra Paizee and FOUND founder Emily Cook for a live conversation on how AI is reshaping the way we think, focus, and perform, and what leaders can do about it.</p>
 
             <div class="media-holder">
               <img src="breakfast-event.jpg" alt="FOUND breakfast event" class="media-bg">
@@ -1083,14 +1151,9 @@
 
             <div class="sessions">
               <div class="session-block">
-                <div class="session-label">Next Session</div>
-                <div class="session-date">Wed / 29th Apr</div>
+                <div class="session-label">When</div>
+                <div class="session-date">Wednesday, 29th April 2026</div>
                 <div class="session-time">3:00pm &ndash; 4:00pm BST</div>
-              </div>
-              <div class="session-block">
-                <div class="session-label">Future Session</div>
-                <div class="session-date">Thu / 30th Apr</div>
-                <div class="session-time">9:30am &ndash; 10:30am BST</div>
               </div>
             </div>
 
@@ -1109,7 +1172,7 @@
                 <img src="alexandra-paizee.jpg" alt="Alexandra Paizee" class="host-avatar" style="object-fit: cover;">
                 <div class="host-info">
                   <div class="host-name">Alexandra Paizee</div>
-                  <div class="host-role">Principal Scientist &mdash; Neuropsychology</div>
+                  <div class="host-role">Principal Scientist, Neuropsychology</div>
                 </div>
               </div>
             </div>
@@ -1117,29 +1180,49 @@
 
           <!-- Registration Form -->
           <div class="form-card">
-            <form id="register-form">
+            <form id="register-form" novalidate>
               <h2>Save your spot</h2>
               <div class="form-row">
                 <div class="form-group">
-                  <input type="text" name="firstName" placeholder="First name" required>
+                  <label for="reg-firstName" class="sr-only">First name</label>
+                  <input id="reg-firstName" type="text" name="firstName" placeholder="First name" autocomplete="given-name" required>
                 </div>
                 <div class="form-group">
-                  <input type="text" name="lastName" placeholder="Last name" required>
+                  <label for="reg-lastName" class="sr-only">Last name</label>
+                  <input id="reg-lastName" type="text" name="lastName" placeholder="Last name" autocomplete="family-name" required>
                 </div>
               </div>
               <div class="form-group">
-                <input type="email" name="email" placeholder="Email" required>
+                <label for="reg-email" class="sr-only">Email</label>
+                <input id="reg-email" type="email" name="email" placeholder="Work email" autocomplete="email" required>
               </div>
               <div class="form-group">
-                <input type="text" name="company" placeholder="Company" required>
+                <label for="reg-company" class="sr-only">Company</label>
+                <input id="reg-company" type="text" name="company" placeholder="Company" autocomplete="organization" required>
               </div>
               <div class="form-group">
-                <input type="text" name="role" placeholder="Role" required>
+                <label for="reg-role" class="sr-only">Role</label>
+                <input id="reg-role" type="text" name="role" placeholder="Role" autocomplete="organization-title" required>
               </div>
               <div class="form-group">
-                <textarea name="questions" placeholder="What questions would you like answered? (optional)"></textarea>
+                <label for="reg-questions" class="sr-only">Questions</label>
+                <textarea id="reg-questions" name="questions" placeholder="What questions would you like answered? (optional)"></textarea>
               </div>
-              <button type="submit" class="btn-register">Register Now</button>
+
+              <!-- Honeypot: hidden from humans, attractive to bots -->
+              <div class="form-honeypot" aria-hidden="true">
+                <label for="reg-website">Website (leave blank)</label>
+                <input id="reg-website" type="text" name="website" tabindex="-1" autocomplete="off">
+              </div>
+
+              <button type="submit" class="btn-register" id="register-submit">Register Now</button>
+
+              <label class="form-consent">
+                <input type="checkbox" name="consent" required>
+                <span>I agree to FOUND emailing me about this session and other relevant FOUND events. Unsubscribe any time. See our <a href="https://foundperform.com/privacy" target="_blank" rel="noopener">privacy policy</a>.</span>
+              </label>
+
+              <div id="form-error" class="form-error" hidden role="alert"></div>
 
               <div class="form-meta">
                 <div class="meta-item">
@@ -1172,17 +1255,17 @@
           <div class="learn-card">
             <div class="step-number">1</div>
             <h3>The neuroscience of cognitive load in an AI-heavy workday</h3>
-            <p>Why attention, decision fatigue and deep thinking are the new scarce resources &mdash; and what the latest neuroscience tells us about protecting them.</p>
+            <p>Why attention, decision fatigue and deep thinking are the new scarce resources, and what the latest neuroscience tells us about protecting them.</p>
           </div>
           <div class="learn-card">
             <div class="step-number">2</div>
             <h3>Practical frameworks to work smarter with AI, not smaller</h3>
-            <p>How high-performing teams are using AI to amplify human judgment rather than erode it &mdash; and the habits that separate leaders who compound their edge from those who don't.</p>
+            <p>How high-performing teams are using AI to amplify human judgment rather than erode it, and the habits that separate leaders who compound their edge from those who don't.</p>
           </div>
           <div class="learn-card">
             <div class="step-number">3</div>
             <h3>Live Q&amp;A with Alexandra and Emily</h3>
-            <p>Bring your questions. We'll dig into real scenarios from the private markets &mdash; what's working, what isn't, and what to try next week.</p>
+            <p>Bring your questions. We'll dig into real scenarios from the private markets. What's working, what isn't, and what to try next week.</p>
           </div>
         </div>
       </div>
@@ -1193,8 +1276,8 @@
       <div class="container">
         <div class="who-card">
           <p class="eyebrow">Who this is for</p>
-          <h2>Built for the people shaping the Private Markets in the AI-Era.</h2>
-          <p><strong>PE partners, principals, analysts, and operations teams</strong> at funds managing <strong>$50M to $5B+</strong> who want to build the right framework and skillset for the AI-future workplace &mdash; without losing the human edge that makes great investors great.</p>
+          <h2>For the people shaping Private Markets in the AI-Era.</h2>
+          <p><strong>PE partners, principals, analysts, and operations teams</strong> at funds managing <strong>$50M to $5B+</strong> who want to build the right framework and skillset for the AI-future workplace, without losing the human edge that makes great investors great.</p>
         </div>
       </div>
     </section>
@@ -1240,7 +1323,7 @@
           </div>
 
           <div class="testimonial-card">
-            <p class="testimonial-quote">&ldquo;Outstanding coach &mdash; supportive, structured, and impactful. Thank you, Emily!&rdquo;</p>
+            <p class="testimonial-quote">&ldquo;Outstanding coach. Supportive, structured, and impactful. Thank you, Emily!&rdquo;</p>
             <div class="testimonial-author">
               <img src="testimonial-thomas.jpg" alt="Thomas C" class="testimonial-avatar">
               <div class="testimonial-info">
@@ -1282,9 +1365,7 @@
       <div class="modal-cards">
 
         <a href="webinar.ics" class="next-card" download>
-          <div class="next-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          </div>
+          <div class="next-number">1</div>
           <h3>Add to your calendar</h3>
           <p>Download the .ics invite so you don't miss the session. We'll email the Zoom link the morning of.</p>
           <span class="next-link">
@@ -1293,24 +1374,20 @@
           </span>
         </a>
 
-        <a href="https://become.keypersonofinfluence.com/scorecard" class="next-card" target="_blank" rel="noopener">
-          <div class="next-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/><line x1="9" y1="11" x2="15" y2="11"/></svg>
-          </div>
-          <h3>Complete the Key Person Scorecard</h3>
-          <p>A 5-minute diagnostic that reveals where your performance edge is strongest &mdash; and where AI is most likely to erode it.</p>
+        <a href="https://scorecard.foundperform.com" class="next-card" target="_blank" rel="noopener">
+          <div class="next-number">2</div>
+          <h3>Take the Key Performer Scorecard</h3>
+          <p>A free assessment to benchmark your performance at work, understand if you're on the right career trajectory, and see where you can improve. Useful context to bring to the webinar.</p>
           <span class="next-link">
-            Take the scorecard
+            Take the assessment
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </span>
         </a>
 
-        <a href="https://youtube.com" class="next-card" target="_blank" rel="noopener">
-          <div class="next-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"/></svg>
-          </div>
-          <h3>Watch Emily on the Sarah McKay podcast</h3>
-          <p>Emily sat down with neuroscientist Dr Sarah McKay to unpack the brain science behind peak performance &mdash; the perfect primer for this session.</p>
+        <a href="https://www.youtube.com/watch?v=d0hXs_6SD-E" class="next-card" target="_blank" rel="noopener">
+          <div class="next-number">3</div>
+          <h3>Watch Emily's interview with Dr Sarah McKay</h3>
+          <p>An interview Emily hosted with Sarah McKay, world-renowned neuroscientist, unpacking high performance and the impact of high-demand roles &amp; AI on the brain.</p>
           <span class="next-link">
             Watch the interview
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -1325,7 +1402,9 @@
     (function() {
       const form = document.getElementById('register-form');
       const modal = document.getElementById('success-modal');
-      if (!form || !modal) return;
+      const submitBtn = document.getElementById('register-submit');
+      const errorEl = document.getElementById('form-error');
+      if (!form || !modal || !submitBtn || !errorEl) return;
       const nameEl = document.getElementById('success-name');
 
       function openModal() {
@@ -1340,11 +1419,81 @@
         document.body.style.overflow = '';
       }
 
-      form.addEventListener('submit', function(e) {
+      function showError(message) {
+        errorEl.textContent = message;
+        errorEl.hidden = false;
+      }
+
+      function clearError() {
+        errorEl.hidden = true;
+        errorEl.textContent = '';
+      }
+
+      function setLoading(isLoading) {
+        submitBtn.disabled = isLoading;
+        submitBtn.textContent = isLoading ? 'Registering\u2026' : 'Register Now';
+      }
+
+      // Capture UTM params for attribution
+      function getUtmParams() {
+        const params = new URLSearchParams(window.location.search);
+        const utm = {};
+        ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'].forEach(k => {
+          if (params.get(k)) utm[k] = params.get(k);
+        });
+        return utm;
+      }
+
+      form.addEventListener('submit', async function(e) {
         e.preventDefault();
-        const firstName = (form.elements['firstName'].value || '').trim();
-        if (nameEl && firstName) nameEl.textContent = firstName;
-        openModal();
+        clearError();
+
+        // HTML5 validity check (since we set novalidate)
+        if (!form.checkValidity()) {
+          const invalid = form.querySelector(':invalid');
+          if (invalid && invalid.name === 'consent') {
+            showError('Please tick the consent box so we know it\u2019s OK to email you.');
+          } else {
+            showError('Please fill in all required fields with a valid work email.');
+          }
+          if (invalid) invalid.focus();
+          return;
+        }
+
+        const data = {
+          firstName: form.elements['firstName'].value.trim(),
+          lastName: form.elements['lastName'].value.trim(),
+          email: form.elements['email'].value.trim(),
+          company: form.elements['company'].value.trim(),
+          role: form.elements['role'].value.trim(),
+          questions: form.elements['questions'].value.trim(),
+          consent: form.elements['consent'].checked,
+          website: form.elements['website'].value, // honeypot
+          utm: getUtmParams(),
+          session: '2026-04-29T15:00:00+01:00'
+        };
+
+        setLoading(true);
+        try {
+          const res = await fetch('/api/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+          });
+
+          if (!res.ok) {
+            const body = await res.json().catch(() => ({}));
+            throw new Error(body.error || 'Something went wrong. Please try again.');
+          }
+
+          if (nameEl && data.firstName) nameEl.textContent = data.firstName;
+          openModal();
+          form.reset();
+        } catch (err) {
+          showError(err.message || 'Something went wrong. Please try again.');
+        } finally {
+          setLoading(false);
+        }
       });
 
       modal.addEventListener('click', function(e) {
