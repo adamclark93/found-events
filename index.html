@@ -299,6 +299,32 @@
       background: #e01f3a;
     }
 
+    .form-meta {
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid #f0ede7;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .form-meta .meta-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
+      color: #666;
+      line-height: 1.45;
+    }
+
+    .form-meta .meta-item svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      color: #ff2846;
+      margin-top: 1px;
+    }
+
     /* Events Section */
     .events-section {
       padding: 60px 0 80px;
@@ -661,7 +687,7 @@
             <div class="logo">
               <img src="found-logo.png" alt="FOUND" style="height: 44px; width: auto;">
             </div>
-            <p class="event-label">Free 45-minute live webinar</p>
+            <p class="event-label">Free 60-minute live webinar</p>
             <h1>Cognitive Performance &amp; AI: protecting your edge in a machine-augmented workplace.</h1>
             <p class="hero-subtitle">Join neuropsychologist Alexandra Paizee and FOUND founder Emily Cook for a live conversation on how AI is reshaping the way we think, focus, and perform &mdash; and what leaders can do about it.</p>
 
@@ -676,12 +702,12 @@
               <div class="session-block">
                 <div class="session-label">Next Session</div>
                 <div class="session-date">Wed / 29th Apr</div>
-                <div class="session-time">3:00pm &ndash; 3:45pm BST</div>
+                <div class="session-time">3:00pm &ndash; 4:00pm BST</div>
               </div>
               <div class="session-block">
                 <div class="session-label">Future Session</div>
                 <div class="session-date">Thu / 30th Apr</div>
-                <div class="session-time">9:30am &ndash; 10:15am BST</div>
+                <div class="session-time">9:30am &ndash; 10:30am BST</div>
               </div>
             </div>
 
@@ -730,6 +756,21 @@
               <textarea placeholder="What questions would you like answered? (optional)"></textarea>
             </div>
             <button class="btn-register">Register Now</button>
+
+            <div class="form-meta">
+              <div class="meta-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m17 10 5-3v10l-5-3V10z"/></svg>
+                <span>Hosted on Zoom</span>
+              </div>
+              <div class="meta-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span>60 minutes + live Q&amp;A</span>
+              </div>
+              <div class="meta-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7 16 12 23 17 23 7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                <span>Can't join live? Register and we'll send you the recording</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
