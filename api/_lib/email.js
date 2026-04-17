@@ -57,8 +57,8 @@ function addToCalendarButton(origin) {
 function learnList() {
   return `<p style="font-size:14px;line-height:1.6;color:#2d2d2d;margin:28px 0 12px;font-weight:600;">A reminder of what you'll learn</p>
     <ul style="font-size:15px;line-height:1.7;color:#555;padding-left:20px;margin:0 0 28px;">
-      <li>The neuroscience of cognitive load in an AI-heavy workday.</li>
-      <li>Practical frameworks to work smarter with AI, not smaller.</li>
+      <li>How AI is reshaping the way you think, focus, and perform.</li>
+      <li>The skills that will define high-demand professionals.</li>
       <li>Live Q&amp;A with Alexandra and Emily.</li>
     </ul>`;
 }
