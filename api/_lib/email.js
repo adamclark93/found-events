@@ -132,9 +132,6 @@ export function buildReminderEmail({ firstName, zoomJoinUrl, origin }) {
     ${learnList()}
     ${scorecardCta()}
     ${joinWebinarSection(zoomJoinUrl)}
-    <p style="font-size:13px;line-height:1.6;color:#777;margin:24px 0 0;">
-      Can't make it anymore? No action needed. We'll send you the recording.
-    </p>
   `;
   const salutation = firstName ? `See you tomorrow, ${escapeHtml(firstName)}.` : 'See you tomorrow.';
   return {
