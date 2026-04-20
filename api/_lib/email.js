@@ -41,7 +41,7 @@ function wrap({ heading, bodyHtml, origin }) {
             Hosted by Emily Cook (Founder, FOUND) and Alexandra Paizee (Principal Scientist, Neuropsychology).
           </p>
           <p style="font-size:12px;line-height:1.6;color:#999;margin:0;">
-            Questions? Reply to this email or contact <a href="mailto:email@foundperform.com" style="color:#999;">email@foundperform.com</a>.
+            Questions? Reply to this email or contact <a href="mailto:emily@foundperform.com" style="color:#999;">emily@foundperform.com</a>.
           </p>
         </td></tr>
       </table>
@@ -51,8 +51,18 @@ function wrap({ heading, bodyHtml, origin }) {
 }
 
 function addToCalendarButton(origin) {
+  const title = 'How+to+build+a+competitive+advantage+in+an+AI+future';
+  const details = 'FOUND+webinar+with+Emily+Cook+and+Alexandra+Paizee.';
+  const location = 'https%3A%2F%2Fus06web.zoom.us%2Fj%2F82080464202';
+  const outlookUrl = `https://outlook.office.com/calendar/0/deeplink/compose?path=%2Fcalendar%2Faction%2Fcompose&rru=addevent&startdt=2026-04-30T12%3A00%3A00Z&enddt=2026-04-30T13%3A00%3A00Z&subject=${title}&body=${details}&location=${location}`;
+  const googleUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=20260430T120000Z%2F20260430T130000Z&details=${details}&location=${location}`;
+  const btn = (href, label) => `<a href="${href}" style="display:block;padding:12px 20px;background:#f7f3ec;color:#2d2d2d;text-decoration:none;border-radius:10px;border:1px solid #e8e3da;font-weight:600;font-size:14px;text-align:center;">${label}</a>`;
   return `<div style="margin:28px 0;">
-    <a href="${origin}/webinar.ics" style="display:inline-block;background:#ff2846;color:#ffffff;padding:14px 28px;border-radius:10px;text-decoration:none;font-weight:600;font-size:16px;">Add to Calendar</a>
+    <p style="font-size:13px;color:#888;margin:0 0 10px;font-weight:600;letter-spacing:0.3px;text-transform:uppercase;">Add to calendar</p>
+    <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;max-width:280px;">
+      <tr><td style="padding-bottom:8px;">${btn(outlookUrl, 'Outlook')}</td></tr>
+      <tr><td>${btn(googleUrl, 'Google Calendar')}</td></tr>
+    </table>
   </div>`;
 }
 
