@@ -58,10 +58,12 @@ function addToCalendarButton(origin) {
   const googleUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=20260430T120000Z%2F20260430T130000Z&details=${details}&location=${location}`;
   const btn = (href, label) => `<a href="${href}" style="display:block;padding:12px 20px;background:#f7f3ec;color:#2d2d2d;text-decoration:none;border-radius:10px;border:1px solid #e8e3da;font-weight:600;font-size:14px;text-align:center;">${label}</a>`;
   return `<div style="margin:28px 0;">
-    <p style="font-size:13px;color:#888;margin:0 0 10px;font-weight:600;letter-spacing:0.3px;text-transform:uppercase;">Add to calendar</p>
-    <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;max-width:280px;">
-      <tr><td style="padding-bottom:8px;">${btn(outlookUrl, 'Outlook')}</td></tr>
-      <tr><td>${btn(googleUrl, 'Google Calendar')}</td></tr>
+    <p style="font-size:13px;color:#ff2846;margin:0 0 10px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;">Add to calendar</p>
+    <table role="presentation" cellpadding="0" cellspacing="0" style="max-width:420px;">
+      <tr>
+        <td width="50%" valign="top" style="padding-right:6px;">${btn(outlookUrl, 'Outlook')}</td>
+        <td width="50%" valign="top" style="padding-left:6px;">${btn(googleUrl, 'Google Calendar')}</td>
+      </tr>
     </table>
   </div>`;
 }

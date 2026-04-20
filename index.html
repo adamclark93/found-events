@@ -969,11 +969,23 @@
 
     .next-card--cal {
       cursor: default;
+      position: relative;
+      box-shadow: 0 0 0 2px rgba(255, 40, 70, 0.35), 0 10px 32px rgba(255, 40, 70, 0.25);
+    }
+
+    .next-card--cal::before {
+      content: "";
+      position: absolute;
+      inset: -14px;
+      border-radius: 22px;
+      background: radial-gradient(closest-side, rgba(255, 40, 70, 0.35), rgba(255, 40, 70, 0) 75%);
+      z-index: -1;
+      pointer-events: none;
     }
 
     .next-card--cal:hover {
       transform: none;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+      box-shadow: 0 0 0 2px rgba(255, 40, 70, 0.5), 0 14px 36px rgba(255, 40, 70, 0.3);
     }
 
     .cal-buttons {
@@ -1417,7 +1429,7 @@
         </div>
         <h2 id="modal-title">You're in, <span id="success-name">friend</span>!</h2>
         <p>We've saved your spot. Check your inbox for the Zoom link and calendar invite.</p>
-        <p class="modal-subtitle">Three things to do before the session kicks off:</p>
+        <p class="modal-subtitle">Three things you can do before the session</p>
       </div>
 
       <div class="modal-cards">
