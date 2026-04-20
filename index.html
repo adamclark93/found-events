@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Standing Out &amp; Staying Ahead in the AI Era | FOUND</title>
+  <title>Standing Out &amp; Staying Ahead in the AI Future | FOUND</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
@@ -75,6 +75,28 @@
       margin-bottom: 32px;
     }
 
+    .hero-pill {
+      display: inline-block;
+      background: #ff2846;
+      color: #f1ece4;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 999px;
+      margin-bottom: 20px;
+    }
+
+    .form-meta {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+      color: #888;
+      margin: -8px 0 20px;
+    }
+
     .hero h1 {
       font-size: 56px;
       font-weight: 400;
@@ -89,7 +111,7 @@
       font-size: 18px;
       color: #555;
       margin-bottom: 36px;
-      max-width: 520px;
+      max-width: 640px;
       line-height: 1.55;
     }
 
@@ -599,16 +621,19 @@
     }
 
     .learn-card h3 {
-      font-size: 22px;
-      font-weight: 400;
-      margin-bottom: 12px;
-      line-height: 1.2;
+      font-family: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+      line-height: 1.35;
+      min-height: calc(3 * 1.35em);
     }
 
     .learn-card p {
-      font-size: 14px;
-      color: #666;
-      line-height: 1.6;
+      font-size: 15px;
+      color: #555;
+      line-height: 1.7;
     }
 
     @media (max-width: 900px) {
@@ -672,7 +697,7 @@
       text-align: center;
       font-size: 42px;
       font-weight: 400;
-      margin-bottom: 12px;
+      margin-bottom: 48px;
       line-height: 1.1;
     }
 
@@ -1141,8 +1166,8 @@
               <img src="found-logo.png" alt="FOUND" style="height: 44px; width: auto;">
               <p style="font-family: 'Instrument Serif', Georgia, serif; font-size: 14px; font-style: italic; color: #777; margin-top: 0px; margin-bottom: 12px; letter-spacing: 0.3px;">Performance Advisory for Private Markets</p>
             </div>
-            <p class="event-label">Free 60-minute live webinar</p>
-            <h1>Standing Out &amp; Staying Ahead in the AI Era.</h1>
+            <span class="hero-pill">For Private Markets</span>
+            <h1>Standing Out &amp; Staying Ahead in the AI Future.</h1>
             <p style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-size: 26px; color: #777; margin: -4px 0 28px; line-height: 1.25;">The cognitive side most people aren't thinking about.</p>
             <p class="hero-subtitle">Join Emily Cook, Founder and Performance Coach at FOUND, and neuropsychology researcher Alexandra Paizee as they unpack: how to keep your decision-making and judgement as sharp as your investors and portfolio companies need them to be as you outsource more of your work and thinking to AI, and the skills you should be building to set yourself apart and not get left behind.</p>
 
@@ -1154,8 +1179,8 @@
             <div class="sessions">
               <div class="session-block">
                 <div class="session-label">When</div>
-                <div class="session-date">Wednesday, 29th April 2026</div>
-                <div class="session-time">3:00pm &ndash; 4:00pm BST</div>
+                <div class="session-date">Thursday, 30th April 2026</div>
+                <div class="session-time">1:00pm &ndash; 2:00pm BST</div>
               </div>
             </div>
 
@@ -1184,6 +1209,7 @@
           <div class="form-card">
             <form id="register-form" novalidate>
               <h2>Save your spot</h2>
+              <p class="form-meta">Free 60-minute live webinar</p>
               <div class="form-row">
                 <div class="form-group">
                   <label for="reg-firstName" class="sr-only">First name</label>
@@ -1287,8 +1313,7 @@
     <!-- Testimonials -->
     <section class="testimonials-section">
       <div class="container">
-        <h2>Trusted by leaders in private equity</h2>
-        <p class="section-subtitle">From the teams already working with FOUND</p>
+        <h2>Trusted by leaders in private markets</h2>
         <div class="testimonials-grid">
 
           <div class="testimonial-card">
@@ -1472,7 +1497,7 @@
           consent: form.elements['consent'].checked,
           website: form.elements['website'].value, // honeypot
           utm: getUtmParams(),
-          session: '2026-04-29T15:00:00+01:00'
+          session: '2026-04-30T13:00:00+01:00'
         };
 
         setLoading(true);

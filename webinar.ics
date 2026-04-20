@@ -21,10 +21,10 @@ RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU
 END:DAYLIGHT
 END:VTIMEZONE
 BEGIN:VEVENT
-UID:found-webinar-20260429@foundperform.com
+UID:found-webinar-20260430@foundperform.com
 DTSTAMP:20260416T140000Z
-DTSTART;TZID=Europe/London:20260429T150000
-DTEND;TZID=Europe/London:20260429T160000
+DTSTART;TZID=Europe/London:20260430T130000
+DTEND;TZID=Europe/London:20260430T140000
 SUMMARY:Private Markets: Build Future-Ready Skills in an AI World
 DESCRIPTION:Live 60-minute session with FOUND founder Emily Cook and neuropsychology researcher Alexandra Paizee.\n\nWe'll email the Zoom link before the session. Bring your questions. The final 15 minutes are live Q&A.\n\nQuestions: hello@foundperform.com
 LOCATION:Zoom (link sent by email)

@@ -6,9 +6,9 @@
  */
 
 export const SESSION = {
-  dateLabel: 'Wednesday, 29 April 2026',
-  timeLabel: '3:00pm to 4:00pm BST',
-  startIso: '2026-04-29T15:00:00+01:00'
+  dateLabel: 'Thursday, 30 April 2026',
+  timeLabel: '1:00pm to 2:00pm BST',
+  startIso: '2026-04-30T13:00:00+01:00'
 };
 
 export function escapeHtml(str) {
