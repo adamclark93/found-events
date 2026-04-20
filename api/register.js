@@ -86,9 +86,9 @@ export default async function handler(req, res) {
     return res.status(200).json({ ok: true });
   }
 
-  const { firstName, lastName, email, company, role, questions, consent, utm } = body;
+  const { firstName, lastName, email, company, questions, consent, utm } = body;
 
-  if (!firstName || !lastName || !email || !company || !role) {
+  if (!firstName || !lastName || !email || !company) {
     return res.status(400).json({ error: 'Please fill in every field.' });
   }
   if (!validEmail(email)) {
@@ -156,7 +156,7 @@ export default async function handler(req, res) {
         from: FROM_EMAIL,
         to: ADMIN_EMAIL.split(',').map(s => s.trim()),
         subject: `New registration: ${firstName} ${lastName} (${company})`,
-        html: buildAdminHtml({ firstName, lastName, email, company, role, questions, utm })
+        html: buildAdminHtml({ firstName, lastName, email, company, questions, utm })
       });
     } catch (err) {
       console.error('Admin notification failed:', err);

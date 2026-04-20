@@ -122,7 +122,6 @@ export function buildAdminHtml(data) {
     Name: `${data.firstName} ${data.lastName}`,
     Email: data.email,
     Company: data.company,
-    Role: data.role,
     Questions: data.questions || 'none',
     Source: data.utm?.utm_source || 'direct',
     Campaign: data.utm?.utm_campaign || 'none'
