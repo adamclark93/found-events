@@ -1,6 +1,6 @@
 # FOUND Webinar Registration Page
 
-Single-page registration site for the 29 Apr 2026 webinar, deployed to Vercel.
+Single-page registration site for the 30 Apr 2026 webinar, deployed to Vercel.
 
 ## What's here
 
@@ -10,7 +10,7 @@ Single-page registration site for the 29 Apr 2026 webinar, deployed to Vercel.
 | `api/register.js` | Serverless function for form submits: validates, optionally registers with Zoom, sends confirmation via Resend, adds contact to audience, notifies admin |
 | `api/send-reminder.js` | Serverless function that sends the day-before reminder to every contact in the Resend audience. Triggered by Vercel Cron or manual curl |
 | `api/_lib/email.js` | Shared email template module - confirmation and reminder both use it, so styling stays aligned |
-| `webinar.ics` | Static calendar invite for the 29 Apr session (served from root) |
+| `webinar.ics` | Static calendar invite for the 30 Apr session (served from root) |
 | `vercel.json` | Security headers, `.ics` content-type, and cron schedule |
 | `package.json` | Just `resend` as a dep |
 | `*.jpg`, `*.png` | Hero, speaker, testimonial, logo images |
@@ -45,7 +45,7 @@ Set these in Vercel → Project → Settings → Environment Variables. All are 
 
 | Var | What | Where to get it |
 |---|---|---|
-| `RESEND_AUDIENCE_ID` | UUID of the Resend audience that registrants get added to | Resend → Audiences → create "Webinar 29 Apr 2026" → copy the ID |
+| `RESEND_AUDIENCE_ID` | UUID of the Resend audience that registrants get added to | Resend → Audiences → create "Webinar 30 Apr 2026" → copy the ID |
 | `CRON_SECRET` | Random string that authenticates `/api/send-reminder` calls. Vercel Cron sends this automatically | Generate with `openssl rand -hex 32` (or any random 32+ char string) |
 
 ### Optional — adds personalised Zoom join links
@@ -57,7 +57,7 @@ If all four are set, the function will register each person directly with Zoom W
 | `ZOOM_ACCOUNT_ID` | From Zoom Server-to-Server OAuth app |
 | `ZOOM_CLIENT_ID` | ^ |
 | `ZOOM_CLIENT_SECRET` | ^ |
-| `ZOOM_WEBINAR_ID` | Numeric ID of the webinar you created in Zoom for 29 Apr |
+| `ZOOM_WEBINAR_ID` | Numeric ID of the webinar you created in Zoom for 30 Apr |
 | `ZOOM_FALLBACK_URL` | Shared Zoom Meeting link — used if Webinar API isn't set up |
 
 ## Setting up Resend (required)
@@ -74,11 +74,11 @@ That's enough to go live. Emails will be sent, admin gets notified, confirmation
 
 ## Setting up the day-before reminder
 
-A Vercel Cron job fires `/api/send-reminder` at **08:00 UTC on 28 April 2026 (9:00am BST)**. It reads every contact in the Resend audience and sends them a branded "see you tomorrow" email.
+A Vercel Cron job fires `/api/send-reminder` at **08:00 UTC on 29 April 2026 (9:00am BST)**. It reads every contact in the Resend audience and sends them a branded "see you tomorrow" email.
 
 To enable it:
 
-1. **Resend → Audiences → Create audience** → name it e.g. "Webinar 29 Apr 2026" → copy the audience ID.
+1. **Resend → Audiences → Create audience** → name it e.g. "Webinar 30 Apr 2026" → copy the audience ID.
 2. **Generate a secret** on your terminal:
    ```bash
    openssl rand -hex 32
@@ -87,7 +87,7 @@ To enable it:
    - `RESEND_AUDIENCE_ID` = the audience ID from step 1
    - `CRON_SECRET` = the secret from step 2
 4. **Redeploy**. New registrations from this point on get added to the audience.
-5. **Confirm the cron is scheduled**: Vercel → Project → Settings → Cron Jobs. You should see `/api/send-reminder` scheduled for `0 8 28 4 *`.
+5. **Confirm the cron is scheduled**: Vercel → Project → Settings → Cron Jobs. You should see `/api/send-reminder` scheduled for `0 8 29 4 *`.
 
 ### Firing the reminder manually
 
@@ -101,7 +101,7 @@ It returns `{ mode, sent, skipped, failed, errors }` so you can see what happene
 
 ### Pre-launch testing
 
-Before 28 Apr, use one of these to confirm everything is wired correctly:
+Before 29 Apr, use one of these to confirm everything is wired correctly:
 
 **Dry run** — see who would be emailed without sending anything:
 ```bash
@@ -118,13 +118,13 @@ Subject gets prefixed with `[TEST]` so you can tell it apart from the real send.
 
 ### Verifying the cron is scheduled
 
-Vercel → Project → Settings → Cron Jobs. You should see `/api/send-reminder` with next run showing **28 Apr 2026 08:00 UTC**. If it's missing or the date is wrong, the cron won't fire.
+Vercel → Project → Settings → Cron Jobs. You should see `/api/send-reminder` with next run showing **29 Apr 2026 08:00 UTC**. If it's missing or the date is wrong, the cron won't fire.
 
 After the cron fires, check Vercel → Functions → Logs → `send-reminder.js` to see the execution result (status code, counts, any errors).
 
 ### After the webinar
 
-The cron expression is `0 8 28 4 *` - no year, so it fires every year on 28 April at 08:00 UTC. Delete it from `vercel.json` (or from Vercel Cron Jobs UI) after the event if you don't want it firing again in 2027.
+The cron expression is `0 8 29 4 *` - no year, so it fires every year on 29 April at 08:00 UTC. Delete it from `vercel.json` (or from Vercel Cron Jobs UI) after the event if you don't want it firing again in 2027.
 
 ## Setting up Zoom Webinars (recommended but optional)
 
@@ -137,8 +137,8 @@ You need a Zoom plan with the **Webinars add-on** (~$79/mo for 100 attendees). I
 ### 2. Create the webinar in Zoom
 
 - Zoom web portal → Webinars → Schedule a Webinar
-- Topic: `Private Markets: Build Future-Ready Skills in an AI World`
-- When: 29 Apr 2026, 3:00pm, duration 60 minutes, timezone London
+- Topic: `How to build a competitive advantage in an AI future`
+- When: 30 Apr 2026, 1:00pm, duration 60 minutes, timezone London
 - Registration: **Required** → "Automatically Approve"
 - Add Emily + Alexandra as panelists
 - Save. Copy the numeric **Webinar ID** from the URL — that's `ZOOM_WEBINAR_ID`.
@@ -171,7 +171,7 @@ Add GA4 + LinkedIn Insight tag script tags in `<head>` when ready. Form submit a
 - [ ] Resend audience created and `RESEND_AUDIENCE_ID` set
 - [ ] `CRON_SECRET` set (32+ chars, random)
 - [ ] Manual reminder test: `curl -H "Authorization: Bearer $CRON_SECRET" .../api/send-reminder` returns `sent > 0`
-- [ ] Vercel Cron Jobs shows `/api/send-reminder` on `0 8 28 4 *`
+- [ ] Vercel Cron Jobs shows `/api/send-reminder` on `0 8 29 4 *`
 - [ ] `webinar.ics` opens correctly in Google Cal, Outlook, Apple Cal
 - [ ] Zoom webinar created (if using Webinars API)
 - [ ] Custom domain pointed at Vercel (e.g. `events.foundperform.com`)

@@ -6,9 +6,11 @@
  */
 
 export const SESSION = {
+  title: 'How to build a competitive advantage in an AI future',
   dateLabel: 'Thursday, 30 April 2026',
   timeLabel: '1:00pm to 2:00pm BST',
-  startIso: '2026-04-30T13:00:00+01:00'
+  startIso: '2026-04-30T13:00:00+01:00',
+  joinUrl: 'https://us06web.zoom.us/j/82080464202'
 };
 
 export function escapeHtml(str) {
@@ -39,7 +41,7 @@ function wrap({ heading, bodyHtml, origin }) {
             Hosted by Emily Cook (Founder, FOUND) and Alexandra Paizee (Principal Scientist, Neuropsychology).
           </p>
           <p style="font-size:12px;line-height:1.6;color:#999;margin:0;">
-            Questions? Reply to this email or contact <a href="mailto:hello@foundperform.com" style="color:#999;">hello@foundperform.com</a>.
+            Questions? Reply to this email or contact <a href="mailto:email@foundperform.com" style="color:#999;">email@foundperform.com</a>.
           </p>
         </td></tr>
       </table>
@@ -63,31 +65,42 @@ function learnList() {
     </ul>`;
 }
 
-function scorecardCta() {
-  return `<p style="font-size:15px;line-height:1.6;color:#2d2d2d;margin:32px 0 10px;font-weight:600;">One thing to do ahead of the session</p>
-    <p style="font-size:14px;line-height:1.65;color:#555;margin:0 0 20px;">
-      Find out what's holding you back at work. We've created a free 5-minute assessment to benchmark you against the key performance factors of career success. Built on data &amp; insights from 500+ top professionals.
+function joinWebinarSection(zoomJoinUrl) {
+  const url = zoomJoinUrl && zoomJoinUrl.trim() ? zoomJoinUrl : SESSION.joinUrl;
+  return `<hr style="border:none;border-top:1px solid #e8e3da;margin:32px 0 20px;">
+    <p style="font-size:15px;line-height:1.6;color:#2d2d2d;margin:0 0 14px;font-weight:600;">How to join this webinar</p>
+    <p style="font-size:14px;line-height:1.65;color:#555;margin:0 0 18px;">
+      On the day, click the button below to join on Zoom. We recommend joining a couple of minutes early.
     </p>
-    <table role="presentation" cellpadding="0" cellspacing="0" align="center" style="margin:0 auto 8px;">
-      <tr><td align="center">
-        <a href="https://scorecard.foundperform.com" style="display:inline-block;background:#ff2846;color:#ffffff;padding:14px 32px;border-radius:10px;text-decoration:none;font-weight:600;font-size:15px;">Take Performance Assessment</a>
-      </td></tr>
-    </table>`;
+    <div style="margin:0 0 8px;">
+      <a href="${url}" style="display:inline-block;background:#ff2846;color:#ffffff;padding:14px 32px;border-radius:10px;text-decoration:none;font-weight:600;font-size:15px;">Join Webinar</a>
+    </div>`;
+}
+
+function scorecardCta() {
+  return `<p style="font-size:15px;line-height:1.6;color:#2d2d2d;margin:32px 0 10px;font-weight:600;">If you want to discover more before the session:</p>
+    <p style="font-size:14px;line-height:1.65;color:#555;margin:0 0 12px;">
+      Find out what's holding you back at work. Take our free 5-minute assessment to benchmark yourself against the key performance factors of career success. Built on data &amp; insights from 500+ top professionals.
+    </p>
+    <p style="margin:0 0 8px;">
+      <a href="https://scorecard.foundperform.com" style="color:#ff2846;text-decoration:underline;font-weight:600;font-size:15px;">Take the Performance Assessment</a>
+    </p>`;
 }
 
 export function buildConfirmationEmail({ firstName, zoomJoinUrl, origin }) {
   const body = `
     <p style="font-size:16px;line-height:1.6;color:#444;margin:0 0 20px;">
-      You're registered for <strong>Private Markets: Build Future-Ready Skills in an AI World</strong>
+      You're registered for <strong>${SESSION.title}</strong>
       on <strong>${SESSION.dateLabel}</strong>, ${SESSION.timeLabel}.
     </p>
     ${addToCalendarButton(origin)}
     <hr style="border:none;border-top:1px solid #e8e3da;margin:24px 0;">
-    <p style="font-size:14px;line-height:1.6;color:#2d2d2d;margin:0 0 12px;font-weight:600;">Two things to do before the session</p>
+    <p style="font-size:14px;line-height:1.6;color:#2d2d2d;margin:0 0 12px;font-weight:600;">If you want to discover more before the session:</p>
     <ol style="font-size:14px;line-height:1.7;color:#555;padding-left:20px;margin:0 0 24px;">
-      <li><a href="https://scorecard.foundperform.com" style="color:#ff2846;">Take the Key Performer Scorecard.</a> Useful context to bring.</li>
-      <li><a href="https://www.youtube.com/watch?v=d0hXs_6SD-E" style="color:#ff2846;">Watch Emily's interview with Dr Sarah McKay.</a> The perfect primer.</li>
+      <li style="margin-bottom:10px;"><a href="https://scorecard.foundperform.com" style="color:#ff2846;">Take the Key Performer Scorecard.</a><br><span style="color:#777;font-size:13px;">Find out if you are a top performer in your industry.</span></li>
+      <li style="margin-bottom:10px;"><a href="${origin}/interview" style="color:#ff2846;">Watch Emily's interview with leading neuroscientist Dr Sarah McKay.</a><br><span style="color:#777;font-size:13px;">Discover the impact of high pressure jobs &amp; AI on the brain.</span></li>
     </ol>
+    ${joinWebinarSection(zoomJoinUrl)}
   `;
   return {
     subject: `You're in, ${firstName}. ${SESSION.dateLabel} webinar`,
@@ -98,21 +111,20 @@ export function buildConfirmationEmail({ firstName, zoomJoinUrl, origin }) {
 export function buildReminderEmail({ firstName, zoomJoinUrl, origin }) {
   const body = `
     <p style="font-size:16px;line-height:1.6;color:#444;margin:0 0 20px;">
-      Quick reminder that <strong>Private Markets: Build Future-Ready Skills in an AI World</strong>
+      Quick reminder that <strong>${SESSION.title}</strong>
       is tomorrow, <strong>${SESSION.dateLabel}</strong> at ${SESSION.timeLabel}.
     </p>
-    <p style="margin:0 0 12px;">
-      <a href="${origin}/webinar.ics" style="color:#ff2846;text-decoration:underline;font-weight:600;font-size:15px;">add to your calendar</a>
-    </p>
+    ${addToCalendarButton(origin)}
     ${learnList()}
     ${scorecardCta()}
+    ${joinWebinarSection(zoomJoinUrl)}
     <p style="font-size:13px;line-height:1.6;color:#777;margin:24px 0 0;">
       Can't make it anymore? No action needed. We'll send you the recording.
     </p>
   `;
   const salutation = firstName ? `See you tomorrow, ${escapeHtml(firstName)}.` : 'See you tomorrow.';
   return {
-    subject: `Tomorrow at 3pm BST: Private Markets x AI webinar`,
+    subject: `Tomorrow at 1pm BST: ${SESSION.title}`,
     html: wrap({ heading: salutation, bodyHtml: body, origin })
   };
 }

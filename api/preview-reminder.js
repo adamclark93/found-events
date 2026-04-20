@@ -12,7 +12,7 @@ import { buildReminderEmail } from './_lib/email.js';
  * /api/register already depends on.
  *
  * Subject is prefixed with [PREVIEW] so it can be told apart from the real
- * reminder that fires from /api/send-reminder on 28 Apr.
+ * reminder that fires from /api/send-reminder on 29 Apr.
  */
 
 export default async function handler(req, res) {
