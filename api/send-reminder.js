@@ -4,7 +4,7 @@ import { buildReminderEmail } from './_lib/email.js';
 /**
  * GET /api/send-reminder
  *
- * Sends a "tomorrow at 1pm BST" reminder to everyone in the Resend audience.
+ * Sends a "tomorrow at 12:30pm BST" reminder to everyone in the Resend audience.
  *
  * Triggered either by:
  *   - Vercel Cron (configured in vercel.json). Vercel auto-sends

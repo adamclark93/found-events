@@ -138,7 +138,7 @@ You need a Zoom plan with the **Webinars add-on** (~$79/mo for 100 attendees). I
 
 - Zoom web portal → Webinars → Schedule a Webinar
 - Topic: `How to build a competitive advantage in an AI future`
-- When: 30 Apr 2026, 1:00pm, duration 60 minutes, timezone London
+- When: 30 Apr 2026, 12:30pm, duration 60 minutes, timezone London
 - Registration: **Required** → "Automatically Approve"
 - Add Emily + Alexandra as panelists
 - Save. Copy the numeric **Webinar ID** from the URL — that's `ZOOM_WEBINAR_ID`.
